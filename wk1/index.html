@@ -1,0 +1,102 @@
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>OOAP – WK1</title>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reset.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.css">
+		<link rel="stylesheet" href="../custom.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../github.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="slides.md"
+					       data-separator="^---"
+					       data-separator-vertical="^--"
+					       data-separator-notes="^Note:"
+					       data-charset="utf-8">
+			</div>
+		</div>
+		<div id="rise-overlay"><div class="line top"></div><div class="line bottom"></div><div class="line left"></div><div class="line right"></div><div class="logo"><img src="../logo.png"></div></div>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/notes/notes.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/markdown/markdown.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+	     	   		controls: true,
+		        	controlsTutorial: true,
+			        controlsLayout: 'bottom-right',
+			        controlsBackArrows: 'faded',
+			        progress: true,
+			        slideNumber: false,
+			        history: true,
+			        keyboard: true,
+			        overview: true,
+			        center: true,
+			        touch: true,
+			        loop: false,
+			        rtl: false,
+			        shuffle: false,
+			        fragments: true,
+			        fragmentInURL: false,
+			        embedded: false,
+			        help: true,
+			        showNotes: false,
+			        autoPlayMedia: false,
+			        autoSlide: 0,
+			        autoSlideStoppable: true,
+			        autoSlideMethod: Reveal.navigateNext,
+			        defaultTiming: 120,
+			        mouseWheel: false,
+			        hideAddressBar: true,
+			        previewLinks: false,
+			        transition: 'default',
+			        transitionSpeed: 'default',
+			        backgroundTransition: 'default',
+			        viewDistance: 3,
+			        parallaxBackgroundImage: '',
+			        parallaxBackgroundSize: '',
+			        parallaxBackgroundHorizontal: 0,
+			        parallaxBackgroundVertical: 0,
+			        display: 'block',
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+
+			// Shows the slide number using default formatting
+			Reveal.configure({ slideNumber: true });
+
+			// Slide number formatting can be configured using these variables:
+			//  "h.v": 	horizontal . vertical slide number (default)
+			//  "h/v": 	horizontal / vertical slide number
+			//    "c": 	flattened slide number
+			//  "c/t": 	flattened slide number / total slides
+			Reveal.configure({ slideNumber: 'c/t' });
+
+			// You can provide a function to fully customize the number:
+			Reveal.configure({ slideNumber: function( slide ) {
+			    // Ignore numbering of vertical slides
+			    return [ Reveal.getIndices( slide ).h+1 ];
+			}});
+
+			// Control which views the slide number displays on using the "showSlideNumber" value:
+			//     "all": show on all views (default)
+			// "speaker": only show slide numbers on speaker notes view
+			//   "print": only show slide numbers when printing to PDF
+			Reveal.configure({ showSlideNumber: 'all' });
+		</script>
+	</body>
+</html>
