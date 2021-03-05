@@ -19,7 +19,7 @@ def rest_api_parameters(in_args, prefix='', out_dict=None):
     {'courses[0][id]':1,
      'courses[0][name]':'course1'}
     """
-    if out_dict == None:
+    if out_dict is None:
         out_dict = {}
     if not type(in_args) in (list, dict):
         out_dict[prefix] = in_args
@@ -84,7 +84,8 @@ sec = LocalGetSections(courseid)
 # Output readable JSON, but print only summary
 print(json.dumps(sec.getsections[1]['summary'], indent=4, sort_keys=True))
 
-# Split the section name by dash and convert the date into the timestamp, it takes the current year, so think of a way for making sure it has the correct year!
+# Split the section name by dash and convert the date into the timestamp, it takes the current year, so think of a
+# way for making sure it has the correct year!
 month = parser.parse(list(sec.getsections)[1]['name'].split('-')[0])
 # Show the resulting timestamp
 print(month)
