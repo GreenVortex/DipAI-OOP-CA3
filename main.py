@@ -38,6 +38,7 @@ def getsections():
         directorycounter += 1
     print("\n")
 
+
 def updatelinks():
     directorycounter = 1
     for x in directory_array:
@@ -67,7 +68,7 @@ def updatelinks():
         data[0]['section'] = directorycounter
         # Write the data back to Moodle
         sec_write = LocalUpdateSections(courseid, data)
-        print(Fore.GREEN+ "Loaded Section:" + Fore.CYAN+ str(directorycounter))
+        print(Fore.GREEN + "Loaded Section:" + Fore.CYAN + str(directorycounter))
         directorycounter += 1
 
 
@@ -88,7 +89,7 @@ else:
 
 # Main program flow
 while True:
-    command = input(Fore.LIGHTBLUE_EX+">> ")
+    command = input(Fore.LIGHTBLUE_EX + ">> ")
     if command == "/gdrive":
         getdrivelinks()
     elif command == "/update":
