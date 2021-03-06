@@ -1,7 +1,5 @@
 from requests import get, post
 import json
-from dateutil import parser
-import datetime
 
 # Module variables to connect to moodle api:
 # Insert token and URL for your site here.
