@@ -5,7 +5,7 @@ from APIFunctions import *
 from videolibrary import *
 import lxml
 import os
-from colorama import Fore, Back, Style
+from colorama import Fore
 
 # Directory search
 directory_array = next(os.walk('.'))[1]
@@ -27,7 +27,16 @@ def clear():
         data[0]['section'] = directorycounter
         # Write the data back to Moodle
         sec_write = LocalUpdateSections(courseid, data)
+        directorycounter += 1
 
+
+def getsections():
+    directorycounter = 1
+    for x in directory_array:
+        sec = LocalGetSections(courseid)
+        print(Fore.YELLOW + json.dumps(sec.getsections[directorycounter]['summary'], indent=4, sort_keys=True))
+        directorycounter += 1
+    print("\n")
 
 def updatelinks():
     directorycounter = 1
@@ -58,13 +67,14 @@ def updatelinks():
         data[0]['section'] = directorycounter
         # Write the data back to Moodle
         sec_write = LocalUpdateSections(courseid, data)
-        print(Fore.YELLOW+json.dumps(sec.getsections[directorycounter]['summary'], indent=4, sort_keys=True))
+        print(Fore.GREEN+ "Loaded Section:" + Fore.CYAN+ str(directorycounter))
         directorycounter += 1
 
 
 # main program
 courseid = "23"  # Course ID
 sec = LocalGetSections(courseid)
+# Installing dependencies
 instalationcheck = input(Fore.CYAN + "Would you like to perform library setup:y/n?: ")
 if instalationcheck == "y":
     os.system('pip install lxml')
@@ -76,6 +86,7 @@ if instalationcheck == "y":
 else:
     print("\n")
 
+# Main program flow
 while True:
     command = input(Fore.LIGHTBLUE_EX+">> ")
     if command == "/gdrive":
@@ -86,9 +97,13 @@ while True:
         confirm = input(Fore.RED + "Are you sure you want to clear? y/n: ")
         if confirm == "y":
             clear()
-            print(Fore.LIGHTCYAN_EX + "Cleared Moodle page")
+            print(Fore.CYAN + "Cleared Moodle page")
     elif command == "/dir":
         print(Fore.CYAN)
         print(directory_array)
+    elif command == "/read":
+        getsections()
+    elif command == "bye":
+        exit()
     else:
-        print("Commands: /gdrive, /update, /clear /dir")
+        print("Commands: /gdrive, /update, /clear, /dir, /read, bye")

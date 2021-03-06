@@ -4,7 +4,7 @@ import requests
 import re
 
 # Array of google drive links
-WeekRecording = ["", "", "", "", "", "", "", "", ""]
+WeekRecording = [""]*9
 WeekRecording[1] = "https://drive.google.com/file/d/1vyPoSlUc5hcXajllDyaqMKvlJOiYxbNH/view?usp=sharing"
 WeekRecording[2] = "https://drive.google.com/file/d/1elgdm2482AMcARz_NUVTjg8KBPmoLTxj/view?usp=sharing"
 WeekRecording[3] = "https://drive.google.com/file/d/1_RgK_fcatlpGOSDn6yokgOEZAFxKmTlc/view?usp=sharing"
