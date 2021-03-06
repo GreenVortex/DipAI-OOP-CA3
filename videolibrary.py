@@ -1,0 +1,10 @@
+WeekRecording = ["","","","","","","","",""]
+WeekRecording[1] = "FREE"
+WeekRecording[1] = "https://drive.google.com/file/d/1vyPoSlUc5hcXajllDyaqMKvlJOiYxbNH/view?usp=sharing"
+WeekRecording[2] = "https://drive.google.com/file/d/1elgdm2482AMcARz_NUVTjg8KBPmoLTxj/view?usp=sharing"
+WeekRecording[3] = "https://drive.google.com/file/d/1_RgK_fcatlpGOSDn6yokgOEZAFxKmTlc/view?usp=sharing"
+WeekRecording[4] = "https://drive.google.com/file/d/1AFfRgg3y_ebWYsmJmANSQYFgOeDnVnwJ/view?usp=sharing"
+WeekRecording[5] = "https://drive.google.com/file/d/1Gx_QXD9kQFJNi9_oOlQN4Sa9Irz0ki2K/view?usp=sharing"
+WeekRecording[6] = "https://drive.google.com/file/d/1nx7eMPpso7oXgU-KViMQZb48qUZahLru/view?usp=sharing"
+WeekRecording[7] = "https://drive.google.com/file/d/1hKgn7qnNlnd91_2YdzcFPwQvn5NeQS2A/view?usp=sharing"
+WeekRecording[8] = "https://drive.google.com/file/d/1rQM7k4oCRTxnAb8gzIGVCgTv1gVuT3Wq/view?usp=sharing"
