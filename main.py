@@ -14,16 +14,41 @@ directory_array.pop(0)  # From GIT and pycharm
 
 
 # print(directory_array) use for testing array
+def clear():
+    directorycounter = 1
+    for x in directory_array:
+        summary = ""
+        data = [{'type': 'num', 'section': 0, 'summary': '', 'summaryformat': 1, 'visible': 1, 'highlight': 0,
+                 'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
+        # Assign the correct summary
+        data[0]['summary'] = summary
+        # Set the correct section number
+        data[0]['section'] = directorycounter
+        # Write the data back to Moodle
+        sec_write = LocalUpdateSections(courseid, data)
 
 
 def updatelinks():
     directorycounter = 1
     for x in directory_array:
         # BS4 magic
-        htmlfile = open("wk"+str(directorycounter)+"/index.html", encoding="utf8")
+        htmlfile = open("wk" + str(directorycounter) + "/index.html", encoding="utf8")
         soup = BeautifulSoup(htmlfile, 'lxml')
         soup = soup.title
-        summary = '<a href="https://mikhail-cct.github.io/ooapp/wk' + str(directorycounter) + '/">' + soup.string + '</a> &nbsp ''<a href="' + WeekRecording[directorycounter] + '> Week ' + str(directorycounter) + ' video </a> ' + '&nbsp <a href="https://github.com/mikhail-cct/ca3-test/raw/master/wk'+ str(directorycounter) +'/wk'+ str(directorycounter) +'.pdf>PDF Lesson</a>'
+        # Building summary
+        title = '<h2>' + soup.string + '</h2>'
+        powerpoint = '<a href="https://mikhail-cct.github.io/ooapp/wk' + str(
+            directorycounter) + '/">' + '<img src="https://icon-library.net//images/powerpoint-icon-vector/powerpoint' \
+                                        '-icon-vector-29.jpg" width="50" /> <b><h3>Powerpoint</h3></b>' + '</a> '
+        video = '<a href="' + WeekRecording[directorycounter] + '"/><img src="https://icon-library.net//images' \
+                                                                '/recording-icon-png/recording-icon-png-25.jpg" ' \
+                                                                'width="50" /><b><h3>Recording</h3></b></a> '
+        pdf = '<a href="https://github.com/mikhail-cct/ca3-test/raw/master/wk{}/wk{}.pdf"><img ' \
+              'src="https://icon-library.net//images/pdf-icon-image/pdf-icon-image-27.jpg" width="50" ' \
+              '/><b><h3>PDF</h3></b></a>'.format(
+            str(directorycounter),
+            str(directorycounter))
+        summary = title + '<hr> ' + video + '<hr> ' + powerpoint + '<hr> ' + pdf
         data = [{'type': 'num', 'section': 0, 'summary': '', 'summaryformat': 1, 'visible': 1, 'highlight': 0,
                  'sectionformatoptions': [{'name': 'level', 'value': '1'}]}]
         # Assign the correct summary
@@ -39,4 +64,13 @@ def updatelinks():
 # main program
 courseid = "23"  # Course ID
 sec = LocalGetSections(courseid)
-updatelinks()
+while True:
+    command = input(">> ")
+    if command == "/gdrive":
+        getdrivelinks()
+    elif command == "/update":
+        updatelinks()
+    elif command == "/clear":
+        clear()
+    else:
+        print("Commands: /gdrive, /update, /clear")
