@@ -5,6 +5,7 @@ from APIFunctions import *
 from videolibrary import *
 import lxml
 import os
+from colorama import Fore, Back, Style
 
 # Directory search
 directory_array = next(os.walk('.'))[1]
@@ -57,20 +58,37 @@ def updatelinks():
         data[0]['section'] = directorycounter
         # Write the data back to Moodle
         sec_write = LocalUpdateSections(courseid, data)
-        print(json.dumps(sec.getsections[directorycounter]['summary'], indent=4, sort_keys=True))
+        print(Fore.YELLOW+json.dumps(sec.getsections[directorycounter]['summary'], indent=4, sort_keys=True))
         directorycounter += 1
 
 
 # main program
 courseid = "23"  # Course ID
 sec = LocalGetSections(courseid)
+instalationcheck = input(Fore.CYAN + "Would you like to perform library setup:y/n?: ")
+if instalationcheck == "y":
+    os.system('pip install lxml')
+    os.system('pip install requests')
+    os.system('pip install bs4')
+    os.system('pip install colorama')
+    print(Fore.LIGHTGREEN_EX + "Setup Complete!")
+    print("\n")
+else:
+    print("\n")
+
 while True:
-    command = input(">> ")
+    command = input(Fore.LIGHTBLUE_EX+">> ")
     if command == "/gdrive":
         getdrivelinks()
     elif command == "/update":
         updatelinks()
     elif command == "/clear":
-        clear()
+        confirm = input(Fore.RED + "Are you sure you want to clear? y/n: ")
+        if confirm == "y":
+            clear()
+            print(Fore.LIGHTCYAN_EX + "Cleared Moodle page")
+    elif command == "/dir":
+        print(Fore.CYAN)
+        print(directory_array)
     else:
-        print("Commands: /gdrive, /update, /clear")
+        print("Commands: /gdrive, /update, /clear /dir")
