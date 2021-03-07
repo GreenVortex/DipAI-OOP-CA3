@@ -7,15 +7,19 @@ import lxml
 import os
 from colorama import Fore
 
+
 # Directory search
-directory_array = next(os.walk('.'))[1]
-del directory_array[-1]  # Fix for the
-directory_array.pop(0)  # Extra directories
-directory_array.pop(0)  # From GIT and pycharm
+def dirtoarray():
+    global directory_array
+    directory_array = next(os.walk('.'))[1]
+    del directory_array[-1]  # Fix for the
+    directory_array.pop(0)  # Extra directories
+    directory_array.pop(0)  # From GIT and pycharm
 
 
 # print(directory_array) use for testing array
 def clear():
+    dirtoarray()  # Get list of directories
     directorycounter = 1
     for x in directory_array:
         summary = ""
@@ -31,6 +35,7 @@ def clear():
 
 
 def getsections():
+    dirtoarray()  # Get list of directories
     directorycounter = 1
     for x in directory_array:
         sec = LocalGetSections(courseid)
@@ -40,6 +45,7 @@ def getsections():
 
 
 def updatelinks():
+    dirtoarray()  # Get list of directories
     global directorycounter
     directorycounter = 1
     for x in directory_array:
@@ -115,6 +121,7 @@ while True:
             clear()
             print(Fore.CYAN + "Cleared Moodle page")
     elif command == "/dir":
+        dirtoarray()
         print(Fore.CYAN)
         print(directory_array)
     elif command == "/read":
