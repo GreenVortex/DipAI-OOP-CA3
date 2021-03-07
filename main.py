@@ -17,7 +17,6 @@ def dirtoarray():
     directory_array.pop(0)  # From GIT and pycharm
 
 
-# print(directory_array) use for testing array
 def clear():
     dirtoarray()  # Get list of directories
     directorycounter = 1
